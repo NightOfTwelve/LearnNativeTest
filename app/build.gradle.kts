@@ -16,9 +16,22 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
-                cppFlags += "-std=c++14"
+//                arguments += "-DANDROID_STL=c++_shared"
+//                cppFlags += "-std=c++11"
+//                cppFlags += "-std=c++14"
+                cppFlags += "-std=c++20"
+                //abiFilters = mutableListOf("armeabi", "armeabi-v7a" , "arm64-v8a", "x86", "x86_64", "mips", "mips64")
+                //abiFilters = mutableSetOf("arm64-v8a");
             }
         }
+
+        ndk {
+            //abiFilters.addAll(arrayOf("armeabi-v7a", "arm64-v8a", "x86_64"))
+            abiFilters.addAll(arrayOf("arm64-v8a"))
+//            abiFilters.addAll(arrayOf("armeabi-v7a"))
+        }
+
+        ndkVersion = "26.1.10909125"
     }
 
     buildTypes {
